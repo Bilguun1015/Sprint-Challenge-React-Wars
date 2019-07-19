@@ -3,6 +3,10 @@ import axios from "axios";
 import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 import PersonName from './PersonName';
 import PersonHeight from "./PersonHeight"
+import PersonPlanet from "./PersonPlanet"
+import PersonStarShips from "./PersonStarShips"
+
+
 const ListExampleIcon = () => 
 {   
     const [people, setPeople] = useState([])    
@@ -20,6 +24,7 @@ const ListExampleIcon = () =>
     return (
         <Table celled>
           <Table.Header>
+          <Table.HeaderCell>Name:</Table.HeaderCell>
           {people.map(name=>{
             return <PersonName key={name.name} name={name.name}/>
            })}
@@ -27,25 +32,28 @@ const ListExampleIcon = () =>
       
           <Table.Body>
             <Table.Row>
+            <Table.Cell>Height:</Table.Cell>
             {people.map(height=>{
                 return <PersonHeight key={height.height} height={height.height}/>
             })}
             </Table.Row>
             <Table.Row>
-              <Table.Cell>Cell</Table.Cell>
-              <Table.Cell>Cell</Table.Cell>
-              <Table.Cell>Cell</Table.Cell>
+            <Table.Cell>Home Planet:</Table.Cell>
+            {people.map(home=>{
+                return <PersonPlanet url={home.homeworld}/>
+            })}
             </Table.Row>
             <Table.Row>
-              <Table.Cell>Cell</Table.Cell>
-              <Table.Cell>Cell</Table.Cell>
-              <Table.Cell>Cell</Table.Cell>
+            <Table.Cell>Mass:</Table.Cell>
+            {people.map(mass=>{
+                return <PersonStarShips mass={mass.mass}/>
+            })}
             </Table.Row>
           </Table.Body>
       
           <Table.Footer>
             <Table.Row>
-              <Table.HeaderCell colSpan='3'>
+              <Table.HeaderCell colSpan='11'>
                 <Menu floated='right' pagination>
                   <Menu.Item as='a' icon>
                     <Icon name='chevron left' />
